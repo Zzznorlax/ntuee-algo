@@ -22,15 +22,12 @@ void SortTool::InsertionSort(vector<int> &data)
         int element = data[i];
 
         int j = i - 1;
-        for (; j >= 0; j--)
+        for (; j >= 0 && data[j] > element; j--)
         {
-            if (data[j] > data[i])
-            {
-                data[j + 1] = data[j];
-            }
+            data[j + 1] = data[j];
         }
 
-        data[j] = element;
+        data[j + 1] = element;
     }
 }
 
@@ -94,7 +91,7 @@ void SortTool::MergeSortSubVector(vector<int> &data, int low, int high)
     // Hint : recursively call itself
     //        Merge function is needed
 
-    if (low > high)
+    if (low == high)
     {
         return;
     }
@@ -121,7 +118,6 @@ void SortTool::Merge(vector<int> &data, int low, int middle1, int middle2, int h
     int combinedIndex = low;
     while (leftIndex <= middle1 && rightIndex <= high)
     {
-
         if (data[leftIndex] < data[rightIndex])
         {
             combined[combinedIndex] = data[leftIndex];
@@ -138,7 +134,7 @@ void SortTool::Merge(vector<int> &data, int low, int middle1, int middle2, int h
 
     int remainingStartIndex = leftIndex;
     int remainingEndIndex = middle1;
-    if (leftIndex == middle1)
+    if (leftIndex > middle1)
     {
         remainingStartIndex = rightIndex;
         remainingEndIndex = high;
@@ -204,7 +200,6 @@ void SortTool::MaxHeapify(vector<int> &data, int root)
         data[root] = tmp;
         MaxHeapify(data, largestElementIndex);
     }
-
 }
 
 //Build max heap
