@@ -103,4 +103,3 @@ fi
 echo "Congratulations!  Passed submission checking!"
 cd ../../
 rm -rf check_$$
-

@@ -114,6 +114,7 @@ void SortTool::Merge(vector<int> &data, int low, int middle1, int middle2, int h
     int rightIndex = middle2;
 
     vector<int> combined(data.size());
+    // int *combined = new int[data.size()];
 
     int combinedIndex = low;
     while (leftIndex <= middle1 && rightIndex <= high)
