@@ -30,27 +30,26 @@ int main(int argc, char *argv[])
     fout.open(argv[2], ios::out);
 
     int start, end;
-    map<int, int> data;
+    // map<int, int> data;
 
     int vertices;
 
     fin >> vertices;
+
+    int data[vertices];
+
     fin.getline(buffer, 200);
 
     while (fin >> start >> end)
     {
-        if (start < end)
-        {
-            data[end] = start;
-        }
-        else if (start > end)
-        {
-            data[start] = end;
-        }
+        data[start] = end;
+        data[end] = start;
     }
+    fin.close();
 
     //////////// the MPS part ////////////////
     Planar planar = Planar(vertices, data);
+
     planar.MPS(0, vertices - 1);
     map<int, int> mps = planar.maxChords;
 
@@ -63,7 +62,6 @@ int main(int argc, char *argv[])
         fout << iter->second << " " << iter->first << endl;
     }
 
-    fin.close();
     fout.close();
     return 0;
 }

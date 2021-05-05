@@ -1,9 +1,8 @@
 
 #include "planar.h"
-#include <iostream>
 
 // Constructor
-Planar::Planar(int vertices, map<int, int> chords)
+Planar::Planar(int vertices, int chords[])
 {
     this->vertices = vertices;
     this->chords = chords;
@@ -16,13 +15,9 @@ Planar::Planar(int vertices, map<int, int> chords)
         for (int i = 0; i <= vertices - 1 - l; i++)
         {
             int j = i + l;
-            if (chords.count(j) == 0)
-            {
-                memo[i][j] = memo[i][j - 1];
-                continue;
-            }
 
             int k = chords[j];
+
             if (k > j || k < i)
             { //case 1
                 memo[i][j] = memo[i][j - 1];

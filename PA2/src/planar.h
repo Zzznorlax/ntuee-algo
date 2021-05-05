@@ -10,17 +10,16 @@ using namespace std;
 class Planar
 {
 public:
-    Planar(int, map<int, int>); // constructor
-    void MPS(int, int);         // finds the maximum planar subset
+    Planar(int, int[]); // constructor
+    void MPS(int, int); // finds the maximum planar subset
 
     map<int, int> maxChords;
 
 private:
+    int *chords;  // chords[end] -> start
+    int vertices; // number of vertices on the circle
 
-    map<int, int> chords; // chords[end] -> start
-    int vertices;         // number of vertices on the circle
-
-    vector<vector<int > > memo; // memo, stores the chords data for each vertice
+    vector<vector<int> > memo; // memo, stores the chords data for each vertice
 };
 
 #endif
