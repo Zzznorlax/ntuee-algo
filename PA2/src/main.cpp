@@ -51,7 +51,8 @@ int main(int argc, char *argv[])
 
     //////////// the MPS part ////////////////
     Planar planar = Planar(vertices, data);
-    map<int, int> mps = planar.MPS(0, vertices - 1);
+    planar.MPS(0, vertices - 1);
+    map<int, int> mps = planar.maxChords;
 
     // //////////// write the output file ///////////
     fout << mps.size() << endl;
